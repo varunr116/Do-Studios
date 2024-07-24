@@ -12,23 +12,40 @@
     renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <img id="card" src="trex/Qrcode.png" />
       <a-asset-item id="avatarModel"
         src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      <video id="video" src="Video/Self.mp4" crossorigin="anonymous" playsinline></video>
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
-      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-      <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
+      <!-- 3D Text Element -->
+      <a-text value="I love you baby" position="0 0.5 0" rotation="0 0 0" color="red" align="center" width="4"></a-text>
+      <!-- Video Element -->
+      <a-video src="#video" position="-1.5 0 0" rotation="0 0 0" width="1" height="1.5"></a-video>
+      <!-- 3D Model -->
+      <!-- <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
         animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-      </a-gltf-model>
-      <a-box position="0 0 0.2" width="0.1" height="0.1" depth="0.1" color="red"
-        event-set__click="_event: click; color: blue"
-        animation__click="property: scale; to: 1.2 1.2 1.2; startEvents: click; dur: 200; easing: easeInOutQuad; loop: false">
-      </a-box>
+      </a-gltf-model> -->
     </a-entity>
   </a-scene>
+
+  <script>
+    // Get the video element
+    const video = document.querySelector('#video');
+
+    // Add an event listener to the MindAR image target
+    const mindarTarget = document.querySelector('a-entity[mindar-image-target]');
+    mindarTarget.addEventListener('targetFound', () => {
+      // Play the video when the image is scanned
+      video.play();
+    });
+
+    mindarTarget.addEventListener('targetLost', () => {
+      // Pause the video when the image is not visible
+      video.pause();
+    });
+  </script>
 </body>
 
 </html>
