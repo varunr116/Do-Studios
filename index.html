@@ -2,9 +2,18 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <style>
+    .circle {
+      border-radius: 50%;
+    }
+
+    .social-media-icon {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,21 +21,36 @@
     renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <a-asset-item id="avatarModel"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-      <video id="video" src="Video/Self.mp4" crossorigin="anonymous" playsinline></video>
+      <img id="profilePic" src="pngs/ProfilePic.jpg" class="circle" />
+      <img id="facebookIcon" src="pngs/facebook.png" />
+      <img id="linkedinIcon" src="pngs/linkedin.png" />
+      <img id="instagramIcon" src="pngs/instagram.png" />
+      <img id="logo" src="pngs/Do_StudioLogo.png" />
+      <video id="video" src="Video/Disha_Intro.mp4" crossorigin="anonymous" playsinline></video>
     </a-assets>
+
+
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
-      <!-- 3D Text Element -->
-      <a-text value="I love you baby" position="0 0.5 0" rotation="0 0 0" color="red" align="center" width="4"></a-text>
-      <!-- Video Element -->
-      <a-video src="#video" position="0 0 0" rotation="0 0 0" width="1" height="1.5"></a-video>
-      <!-- 3D Model -->
-      <!-- <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
-        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-      </a-gltf-model> -->
+      <!-- Profile Picture -->
+      <a-image src="#profilePic" position="1 0.5 0" width="0.5" height="0.5"
+        material="shader: flat; repeat: 1 1; color: white;"></a-image>
+      <!-- 3D Text Name -->
+      <a-text value="DISHA
+                          GAWAI" position="1.25 0.5 0" rotation="0 0 0" color="black" align="left" width="4"></a-text>
+
+      <!-- Social Media Buttons -->
+      <a-image src="#facebookIcon" position="1 0.1 0" width="0.3" height="0.3" class="social-media-icon"
+        onclick="window.open('https://www.facebook.com', '_blank')"></a-image>
+      <a-image src="#linkedinIcon" position="1.5 0.1 0" width="0.3" height="0.3" class="social-media-icon"
+        onclick="window.open('https://www.linkedin.com', '_blank')"></a-image>
+      <a-image src="#instagramIcon" position="2 0.1 0" width="0.3" height="0.3" class="social-media-icon"
+        onclick="window.open('https://www.instagram.com', '_blank')"></a-image>
+
+      <a-image src="#logo" position="0 0.6 0.9" width="0.3" height="0.3" material="shader: flat;"></a-image>
+      <!-- Video Element at the bottom of the card -->
+      <a-video src="#video" position="0 -0.7 0" rotation="0 0 0" width="1" height="0.7"></a-video>
     </a-entity>
   </a-scene>
 
