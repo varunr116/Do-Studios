@@ -23,7 +23,7 @@
     <a-assets>
       <img id="profilePic" src="pngs/ProfilePic.jpg" class="circle" />
       <img id="facebookIcon" src="pngs/facebook.png" />
-      <img id="linkedinIcon" src="pngs/facebook.png" />
+      <img id="linkedinIcon" src="pngs/linkedin.png" />
       <img id="instagramIcon" src="pngs/instagram.png" />
       <img id="logo" src="pngs/Do_StudioLogo.png" />
       <video id="video" src="Video/Disha_Intro.mp4" crossorigin="anonymous" playsinline></video>
@@ -31,9 +31,7 @@
 
 
 
-    <a-camera position="0 0 0" look-controls="enabled: false">
-      <a-cursor></a-cursor>
-    </a-camera>
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
       <!-- Profile Picture -->
       <a-image src="#profilePic" position="1 0.5 0" width="0.5" height="0.5"
@@ -44,23 +42,16 @@
 
       <!-- Social Media Buttons -->
       <a-image src="#facebookIcon" position="1 0.1 0" width="0.3" height="0.3" class="social-media-icon"
-        event-set__1="_event: mousedown; _target: #link-facebook; visible: true"></a-image>
+        onclick="window.open('https://www.facebook.com', '_blank')"></a-image>
       <a-image src="#linkedinIcon" position="1.5 0.1 0" width="0.3" height="0.3" class="social-media-icon"
-        event-set__1="_event: mousedown; _target: #link-linkedin; visible: true"></a-image>
+        onclick="window.open('https://www.linkedin.com', '_blank')"></a-image>
       <a-image src="#instagramIcon" position="2 0.1 0" width="0.3" height="0.3" class="social-media-icon"
-        event-set__1="_event: mousedown; _target: #link-instagram; visible: true"></a-image>
+        onclick="window.open('https://www.instagram.com', '_blank')"></a-image>
 
       <a-image src="#logo" position="0 0.6 0.9" width="0.3" height="0.3" material="shader: flat;"></a-image>
       <!-- Video Element at the bottom of the card -->
       <a-video src="#video" position="0 -0.7 0" rotation="0 0 0" width="1" height="0.7"></a-video>
     </a-entity>
-    <!-- Links that open when buttons are clicked -->
-<!--     <a-link id="link-facebook" href="https://www.facebook.com" title="Facebook" position="1 0.1 -1" width="0.1"
-      height="0.1" visible="false"></a-link>
-    <a-link id="link-linkedin" href="https://www.linkedin.com" title="LinkedIn" position="1.5 0.1 -1" width="0.1"
-      height="0.1" visible="false"></a-link>
-    <a-link id="link-instagram" href="https://www.instagram.com" title="Instagram" position="2 0.1 -1" width="0.1"
-      height="0.1" visible="false"></a-link> -->
   </a-scene>
 
   <script>
